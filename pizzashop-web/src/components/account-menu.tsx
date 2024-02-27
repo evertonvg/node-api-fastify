@@ -1,17 +1,17 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import { Building, ChevronDown, LogOut } from "lucide-react";
 
 export function Accountmenu(){
     return (
-        <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+        <DropdownMenu >
+            <DropdownMenuTrigger asChild className="bg-white">
                 <Button variant="outline" className="flex items-center gap-2 select-none">
                     Pizza Shop
                     <ChevronDown className="w-4 h-4" />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 mt-6 border border-gray-200 p-2 flex flex-col gap-2">
+            <DropdownMenuContent align="end" className="w-56 mt-6 border border-gray-200 p-2 flex flex-col gap-2 bg-white">
                 <DropdownMenuLabel className="flex flex-col">
                     <span>Everton Guetierres</span>
                     <span className="text-xs font-normal text-muted-foreground">
