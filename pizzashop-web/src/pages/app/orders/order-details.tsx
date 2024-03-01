@@ -1,10 +1,9 @@
-import { DialogHeader } from "@/components/ui/dialog";
+import { DialogHeader, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { DialogContent, DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
+
 
 export function OrderDetails(){
     return(
-        // verificar porque não esta sendo exibido um modal 
         <DialogContent>
             <DialogHeader>
                 <DialogTitle>
