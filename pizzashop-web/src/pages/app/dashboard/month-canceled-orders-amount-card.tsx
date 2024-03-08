@@ -1,35 +1,35 @@
-import { getDayOrdersAmount } from "@/api/get-day-orders-amount";
+import { getMonthCanceledOrdersAmount } from "@/api/get-month-canceled-orders-amount";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
-import { Utensils } from "lucide-react";
+import { DollarSign } from "lucide-react";
 
-export function DayOrdersAmountCard(){
-    const {data: dayOrdersAmount } = useQuery({
-        queryFn: getDayOrdersAmount,
-        queryKey:['metrics','day-orders-amount']
+export function MonthCanceledOrdersAmountCard(){
+    const {data: monthCanceledOrdersAmount } = useQuery({
+        queryFn: getMonthCanceledOrdersAmount,
+        queryKey:['metrics','month-canceled-amount']
     })
     return(
         <Card>
             <CardHeader className='items-center justify-between pb-2 space-y-2 flex-row'>
-                <CardTitle className='text-base font-semibold'>Pedidos (dia)</CardTitle>
-                <Utensils className='h-4 w-4 text-muted-foreground'/>
+                <CardTitle className='text-base font-semibold'>Cancelamentos (mês)</CardTitle>
+                <DollarSign className='h-4 w-4 text-muted-foreground'/>
             </CardHeader>
             <CardContent className='space-y-1'>
-                {/* {dayOrdersAmount && (
+                {/* {monthCanceledOrdersAmount && (
                     <> */}
                         <span className='text-2xl font-bold tracking-tighter'>
                         246
-                        {/* {dayOrdersAmount.amount} */}
+                        {/* {monthCanceledOrdersAmount.amount} */}
                     </span>
                     <p className='text-xs text-muted-foreground'>
 
-                        {/* { dayOrdersAmount?.diffFromYesterday >= 0 ? 
+                        {/* { monthCanceledOrdersAmount?.diffFromLastMonth < 0 ? 
                             <span className='text-rose-500 dark:text-emerald-400'>
-                                +{dayOrdersAmount.diffFromYesterday}
+                                -{monthCanceledOrdersAmount.diffFromLastMonth}
                             </span>
                         :
                             <span className='text-rose-500 dark:text-rose-400'>
-                                {dayOrdersAmount.diffFromYesterday}
+                                +{monthCanceledOrdersAmount.diffFromLastMonth}
                             </span>
                         
                         } */}
@@ -37,7 +37,7 @@ export function DayOrdersAmountCard(){
                             -2%
                         </span>
                         
-                        em relação a ontem
+                        em relação ao mes passado
                     </p>
                     {/* </>
                 )}
