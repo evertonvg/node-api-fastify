@@ -74,7 +74,7 @@ export function Signin() {
                     <form action="" className='space-y-4' onSubmit={handleSubmit(handleSignIn)}>
                         <div className='space-y-2'>
                             <Label htmlFor='email'>
-                                Seu email
+                                Seu e-mail
                             </Label>
                             <Input type='email' id='email' {...register('email')} />
                         </div>
