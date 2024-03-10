@@ -7,29 +7,6 @@ import {
 } from 'recharts'
 import colors from "tailwindcss/colors";
 
-const data = [
-    {
-        product: 'pepperoni',
-        amount: 26
-    },
-    {
-        product: '4 queijos',
-        amount: 16
-    },
-    {
-        product: 'marguerita',
-        amount: 50
-    },
-    {
-        product: 'muzzarella',
-        amount: 30
-    },
-    {
-        product: 'frango',
-        amount: 40
-    },
-]
-
 const COLORS =[
     colors.sky['500'],
     colors.amber['500'],
@@ -56,12 +33,11 @@ export function PopularProductsChart(){
                 </div>
             </CardHeader>
             <CardContent>
-                {/* {popularProducts && ( */}
-                    {/* trocar abaixos os data por popularProducts  */}
+                {popularProducts && (
                     <ResponsiveContainer width='100%' height={240}>
                         <PieChart style={{fontSize: 12}}>
                             <Pie 
-                                data={data} 
+                                data={popularProducts} 
                                 dataKey="amount" 
                                 nameKey="product" 
                                 cx="50%" cy="50%" 
@@ -91,15 +67,15 @@ export function PopularProductsChart(){
                                         textAnchor={x > cx ? 'start' : 'end'}
                                         dominantBaseline="central"
                                         >
-                                        {data[index].product.length > 12
-                                            ? data[index].product.substring(0, 12).concat('...')
-                                            : data[index].product}{' '}
+                                        {popularProducts[index].product.length > 12
+                                            ? popularProducts[index].product.substring(0, 12).concat('...')
+                                            : popularProducts[index].product}{' '}
                                         ({value})
                                         </text>
                                     )
                                     }}>
                                 {
-                                    data.map((_,i)=>{
+                                    popularProducts.map((_,i)=>{
                                         return (
                                             <Cell key={`cell-${i}`} fill={COLORS[i]} className="stroke-background hover:opacity-80" />
                                         )
@@ -108,7 +84,7 @@ export function PopularProductsChart(){
                             </Pie>
                         </PieChart>
                     </ResponsiveContainer>
-                {/* )} */}
+                 )}
                 
             </CardContent>
         </Card>

@@ -15,36 +15,31 @@ export function MonthRevenueCard(){
                 <DollarSign className='h-4 w-4 text-muted-foreground'/>
             </CardHeader>
             <CardContent className='space-y-1'>
-                {/* {monthRevenue && (
-                    <> */}
+                {monthRevenue && (
+                    <>
                         <span className='text-2xl font-bold tracking-tighter'>
-                        246
-                        {/* {(monthRevenue.receipt / 100).toLocaleString('pt-BR',{
+                        {(monthRevenue.receipt / 100).toLocaleString('pt-BR',{
                             style:'currency',
                             currency:'BRL'
-                        })} */}
+                        })}
                     </span>
                     <p className='text-xs text-muted-foreground'>
 
-                        {/* { monthRevenue?.diffFromLastMonth >= 0 ? 
+                        { monthRevenue?.diffFromLastmonth >= 0 ? 
                             <span className='text-rose-500 dark:text-emerald-400'>
-                                +{monthRevenue.diffFromLastMonth}
+                                +{monthRevenue.diffFromLastmonth}
                             </span>
                         :
                             <span className='text-rose-500 dark:text-rose-400'>
-                                {monthRevenue.diffFromLastMonth}
+                                {monthRevenue.diffFromLastmonth}
                             </span>
                         
-                        } */}
-                        <span className='text-rose-500 dark:text-rose-400'>
-                            -2%
-                        </span>
+                        }
                         
-                        em relação ao mes passado
+                        { } em relação ao mes passado
                     </p>
-                    {/* </>
+                    </>
                 )}
-                 */}
             </CardContent>
         </Card>
     )

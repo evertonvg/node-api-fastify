@@ -15,33 +15,30 @@ export function DayOrdersAmountCard(){
                 <Utensils className='h-4 w-4 text-muted-foreground'/>
             </CardHeader>
             <CardContent className='space-y-1'>
-                {/* {dayOrdersAmount && (
-                    <> */}
+                {dayOrdersAmount && (
+                    <> 
                         <span className='text-2xl font-bold tracking-tighter'>
-                        246
-                        {/* {dayOrdersAmount.amount} */}
-                    </span>
-                    <p className='text-xs text-muted-foreground'>
-
-                        {/* { dayOrdersAmount?.diffFromYesterday >= 0 ? 
-                            <span className='text-rose-500 dark:text-emerald-400'>
-                                +{dayOrdersAmount.diffFromYesterday}
-                            </span>
-                        :
-                            <span className='text-rose-500 dark:text-rose-400'>
-                                {dayOrdersAmount.diffFromYesterday}
-                            </span>
-                        
-                        } */}
-                        <span className='text-rose-500 dark:text-rose-400'>
-                            -2%
+                            {dayOrdersAmount.amount} 
                         </span>
-                        
-                        em relação a ontem
-                    </p>
-                    {/* </>
+                        <p className='text-xs text-muted-foreground'>
+
+                            
+                            { dayOrdersAmount?.diffFromYesterday >= 0 ? 
+                                <span className='text-rose-500 dark:text-emerald-400'>
+                                    +{dayOrdersAmount.diffFromYesterday}
+                                </span>
+                            :
+                                <span className='text-rose-500 dark:text-rose-400'>
+                                    {dayOrdersAmount.diffFromYesterday}
+                                </span>
+                            
+                            }
+                             
+                            { } em relação a ontem
+                        </p>
+                     </>
                 )}
-                 */}
+                
             </CardContent>
         </Card>
     )

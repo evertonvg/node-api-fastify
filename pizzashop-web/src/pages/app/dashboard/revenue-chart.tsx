@@ -63,10 +63,9 @@ export function RevenueChart(){
                 </div>
             </CardHeader>
             <CardContent>
-                {/* { dailyRevenueinperiod && ( */}
-                {/* trocar data por dailyRevenueinperiod  */}
+                { dailyRevenueinperiod && (
                     <ResponsiveContainer width='100%' height={240}>
-                        <LineChart data={data} style={{fontSize: 12}}>
+                        <LineChart data={dailyRevenueinperiod} style={{fontSize: 12}}>
                             <XAxis dataKey="date" tickLine={false} axisLine={false} dy={16} />
                             <YAxis stroke="888" axisLine={false} tickLine={false} width={80} tickFormatter={(value: number) => value.toLocaleString('pt-BR',{
                                 style: 'currency',
@@ -76,7 +75,8 @@ export function RevenueChart(){
                             <CartesianGrid vertical={false} className="stroke-muted" />
                         </LineChart>
                     </ResponsiveContainer>
-                {/* )} */}
+                
+                )}
                 
             </CardContent>
         </Card>

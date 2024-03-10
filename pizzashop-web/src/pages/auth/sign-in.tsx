@@ -24,18 +24,18 @@ export function Signin() {
         }
     })
 
-    // const { mutateAsync: authenticate } = useMutation({
-    //     mutationFn:signIn
-    // })
+    const { mutateAsync: authenticate } = useMutation({
+        mutationFn:signIn
+    })
 
     async function handleSignIn(data: signInForm){
         try{
 
-            await new Promise(resolve=> setTimeout(resolve,2000))
+            // await new Promise(resolve=> setTimeout(resolve,2000))
 
-            // await authenticate({
-            //     email:data.email
-            // })
+            await authenticate({
+                email:data.email
+            })
 
             toast.success('enviamos um link de autenticação para seu email.',{
                 action:{

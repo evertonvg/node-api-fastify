@@ -30,21 +30,21 @@ export function SignUp() {
             isSubmitting
     } } = useForm<signUpForm>()
     
-    // const { mutateAsync:registerRestaurantFn } = useMutation({
-    //     mutationFn: registerRestaurant,
-    // })
+    const { mutateAsync:registerRestaurantFn } = useMutation({
+        mutationFn: registerRestaurant,
+    })
 
     async function handleSignUp(data: signUpForm){
         try{
 
-            await new Promise(resolve=> setTimeout(resolve,2000))
+            // await new Promise(resolve=> setTimeout(resolve,2000))
 
-            // await registerRestaurantFn({
-            //     restaurantName: data.restaurantName,
-            //     managerName: data.managerName,
-            //     email: data.email,
-            //     phone: data.phone
-            // })
+            await registerRestaurantFn({
+                restaurantName: data.restaurantName,
+                managerName: data.managerName,
+                email: data.email,
+                phone: data.phone
+            })
 
             toast.success('Restaurante cadastrado com sucesso.',{
                 action:{

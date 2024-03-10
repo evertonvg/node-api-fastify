@@ -15,15 +15,15 @@ export function MonthOrdersAmountCard(){
                 <Utensils className='h-4 w-4 text-muted-foreground'/>
             </CardHeader>
             <CardContent className='space-y-1'>
-                {/* {monthOrdersAmount && (
-                    <> */}
+                {monthOrdersAmount && (
+                    <>
                         <span className='text-2xl font-bold tracking-tighter'>
-                        246
-                        {/* {monthOrdersAmount.amount} */}
+                    
+                        {monthOrdersAmount.amount}
                     </span>
                     <p className='text-xs text-muted-foreground'>
 
-                        {/* { monthOrdersAmount?.diffFromLastMonth >= 0 ? 
+                        { monthOrdersAmount?.diffFromLastMonth >= 0 ? 
                             <span className='text-rose-500 dark:text-emerald-400'>
                                 +{monthOrdersAmount.diffFromLastMonth}
                             </span>
@@ -32,16 +32,12 @@ export function MonthOrdersAmountCard(){
                                 {monthOrdersAmount.diffFromLastMonth}
                             </span>
                         
-                        } */}
-                        <span className='text-rose-500 dark:text-rose-400'>
-                            -2%
-                        </span>
-                        
-                        em relação ao mes passado
+                        }
+                        {} em relação ao mes passado
                     </p>
-                    {/* </>
+                    </>
                 )}
-                 */}
+
             </CardContent>
         </Card>
     )
