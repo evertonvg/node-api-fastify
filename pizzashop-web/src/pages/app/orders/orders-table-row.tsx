@@ -28,54 +28,54 @@ export function OrderTableRow({order}: OrderTableRowProps){
     const [isDetailsOpen, setIsDetailsOpen ] = useState(false)
     const queryClient = useQueryClient()
 
-    // function updateorderStatusOnCache(orderId:string, status:OrderStatus ){
-    //     const ordersListCache = queryClient.getQueriesData<GetOrdersResponse>({
-    //         queryKey:['orders'],
-    //     })
-    //     ordersListCache.forEach(([cacheKey, cacheData])=>{
-    //         if(!cacheData){
-    //             return
-    //         }
-    //         queryClient.setQueryData<GetOrdersResponse>(cacheKey,{
-    //             ...cacheData,
-    //             orders: cacheData.orders.map( order =>{
-    //                 if(order.orderId === orderId){
-    //                     return { ...order, status}
-    //                 }
-    //                 return order
-    //             })
-    //         })
-    //     })
-    // }
+    function updateorderStatusOnCache(orderId:string, status:OrderStatus ){
+        const ordersListCache = queryClient.getQueriesData<GetOrdersResponse>({
+            queryKey:['orders'],
+        })
+        ordersListCache.forEach(([cacheKey, cacheData])=>{
+            if(!cacheData){
+                return
+            }
+            queryClient.setQueryData<GetOrdersResponse>(cacheKey,{
+                ...cacheData,
+                orders: cacheData.orders.map( order =>{
+                    if(order.orderId === orderId){
+                        return { ...order, status}
+                    }
+                    return order
+                })
+            })
+        })
+    }
 
-    // const { mutateAsync: cancelOrderFn, isPending: isCancelingOrder} = useMutation({
-    //     mutationFn: cancelOrder,
-    //     async onSuccess(_,{orderId}){
-    //         updateorderStatusOnCache(orderId,'canceled')
+    const { mutateAsync: cancelOrderFn, isPending: isCancelingOrder} = useMutation({
+        mutationFn: cancelOrder,
+        async onSuccess(_,{orderId}){
+            updateorderStatusOnCache(orderId,'canceled')
 
-    //     }
-    // })
-    // const { mutateAsync: approveOrderFn, isPending: isApprovingOrder} = useMutation({
-    //     mutationFn: approveOrder,
-    //     async onSuccess(_,{orderId}){
-    //         updateorderStatusOnCache(orderId,'processing')
+        }
+    })
+    const { mutateAsync: approveOrderFn, isPending: isApprovingOrder} = useMutation({
+        mutationFn: approveOrder,
+        async onSuccess(_,{orderId}){
+            updateorderStatusOnCache(orderId,'processing')
 
-    //     }
-    // })
-    // const { mutateAsync: dispatchOrderFn, isPending: isDispatchingOrder } = useMutation({
-    //     mutationFn: dispatchOrder,
-    //     async onSuccess(_,{orderId}){
-    //         updateorderStatusOnCache(orderId,'delivering')
+        }
+    })
+    const { mutateAsync: dispatchOrderFn, isPending: isDispatchingOrder } = useMutation({
+        mutationFn: dispatchOrder,
+        async onSuccess(_,{orderId}){
+            updateorderStatusOnCache(orderId,'delivering')
 
-    //     }
-    // })
-    // const { mutateAsync: deliverOrderFn, isPending: isDeliveringOrder} = useMutation({
-    //     mutationFn: deliverOrder,
-    //     async onSuccess(_,{orderId}){
-    //         updateorderStatusOnCache(orderId,'delivered')
+        }
+    })
+    const { mutateAsync: deliverOrderFn, isPending: isDeliveringOrder} = useMutation({
+        mutationFn: deliverOrder,
+        async onSuccess(_,{orderId}){
+            updateorderStatusOnCache(orderId,'delivered')
 
-    //     }
-    // })
+        }
+    })
    
     return (
         <TableRow>
@@ -94,35 +94,26 @@ export function OrderTableRow({order}: OrderTableRowProps){
             </TableCell>
             <TableCell className="font-mono text-xs font-medium">{order.orderId}</TableCell>
             <TableCell className="text-muted-foreground"> 
-                {/* { formatDistanceToNow(order.createdAt,{
+                { formatDistanceToNow(order.createdAt,{
                     locale: ptBR,
                     addSuffix:true
-                })} */}
-                há 15 min
+                })}
             </TableCell>
             <TableCell >
-                {/* <OrderStatus status={order.status} /> */}
-                <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-slate-400"></span>
-                    <span className="font-medium text-muted-foreground">Pendente</span>
-                </div>
+                <OrderStatus status={order.status} />
             </TableCell>
             <TableCell className="font-medium">
-                {/* {order.customerName} */}
-                Everton V. Guetierres
+                {order.customerName}
             </TableCell>
             <TableCell className="font-medium">
-                {/* {(order.total/100).toLocaleString('pt-BR',{
+                {(order.total/100).toLocaleString('pt-BR',{
                     style:'currency',
                     currency: 'BRL',
-                })} */}
-                R$ 100,00
+                })}
+    
             </TableCell>
             <TableCell>
-                {/* <Button onClick={()=> approveOrderFn({orderId: order.orderId})} variant="outline" size="xs" disabled={isApprovingOrder}>
-                    <ArrowRight className="mr-2 h-3 w-3" />
-                    Aprovar
-                </Button>
+
                 {order.status === 'pending' && (
                     <Button onClick={()=> approveOrderFn({orderId: order.orderId})} variant="outline" size="xs" disabled={isApprovingOrder}>
                         <ArrowRight className="mr-2 h-3 w-3" />
@@ -140,15 +131,15 @@ export function OrderTableRow({order}: OrderTableRowProps){
                         <ArrowRight className="mr-2 h-3 w-3" />
                         Entregue
                     </Button>
-                )} */}
+                )}
             </TableCell>
             <TableCell>
-                {/* {order.status==='processing' && (
+                {order.status==='processing' && (
                     <Button variant="ghost" size="xs" disabled={!['pending','processing'].includes(order.status) || isCancelingOrder } onClick={()=> cancelOrderFn({orderId: order.orderId})}>
                         <X className="mr-2 h-3 w-3" />
                         Cancelar
                     </Button>
-                )} */}
+                )}
             </TableCell>
         </TableRow>
 

@@ -66,10 +66,10 @@ export function Orders(){
                             </TableBody>
                         </Table>
                     </div>
-                    <Pagination pageIndex={1} totalCount={12} perpage={10} onPageChange={handlePaginate} />
-                    {/* {result && (
+
+                    {result && (
                         <Pagination onPageChange={handlePaginate} pageIndex={result.meta.pageIndex} totalCount={result.meta.totalCount} perpage={result.meta.perPage} />
-                    )} */}
+                    )}
                 </div>               
             </div>
         </>
