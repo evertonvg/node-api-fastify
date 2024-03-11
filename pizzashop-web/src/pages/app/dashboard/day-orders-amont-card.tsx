@@ -1,45 +1,41 @@
-import { getDayOrdersAmount } from "@/api/get-day-orders-amount";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useQuery } from "@tanstack/react-query";
-import { Utensils } from "lucide-react";
+import { useQuery } from '@tanstack/react-query'
+import { Utensils } from 'lucide-react'
 
-export function DayOrdersAmountCard(){
-    const {data: dayOrdersAmount } = useQuery({
-        queryFn: getDayOrdersAmount,
-        queryKey:['metrics','day-orders-amount']
-    })
-    return(
-        <Card>
-            <CardHeader className='items-center justify-between pb-2 space-y-2 flex-row'>
-                <CardTitle className='text-base font-semibold'>Pedidos (dia)</CardTitle>
-                <Utensils className='h-4 w-4 text-muted-foreground'/>
-            </CardHeader>
-            <CardContent className='space-y-1'>
-                {dayOrdersAmount && (
-                    <> 
-                        <span className='text-2xl font-bold tracking-tighter'>
-                            {dayOrdersAmount.amount} 
-                        </span>
-                        <p className='text-xs text-muted-foreground'>
+import { getDayOrdersAmount } from '@/api/get-day-orders-amount'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-                            
-                            { dayOrdersAmount?.diffFromYesterday >= 0 ? 
-                                <span className='text-rose-500 dark:text-emerald-400'>
-                                    +{dayOrdersAmount.diffFromYesterday}
-                                </span>
-                            :
-                                <span className='text-rose-500 dark:text-rose-400'>
-                                    {dayOrdersAmount.diffFromYesterday}
-                                </span>
-                            
-                            }
-                             
-                            { } em relação a ontem
-                        </p>
-                     </>
-                )}
-                
-            </CardContent>
-        </Card>
-    )
+export function DayOrdersAmountCard() {
+  const { data: dayOrdersAmount } = useQuery({
+    queryFn: getDayOrdersAmount,
+    queryKey: ['metrics', 'day-orders-amount'],
+  })
+  return (
+    <Card>
+      <CardHeader className="flex-row items-center justify-between space-y-2 pb-2">
+        <CardTitle className="text-base font-semibold">Pedidos (dia)</CardTitle>
+        <Utensils className="h-4 w-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent className="space-y-1">
+        {dayOrdersAmount && (
+          <>
+            <span className="text-2xl font-bold tracking-tighter">
+              {dayOrdersAmount.amount}
+            </span>
+            <p className="text-xs text-muted-foreground">
+              {dayOrdersAmount?.diffFromYesterday >= 0 ? (
+                <span className="text-rose-500 dark:text-emerald-400">
+                  +{dayOrdersAmount.diffFromYesterday}
+                </span>
+              ) : (
+                <span className="text-rose-500 dark:text-rose-400">
+                  {dayOrdersAmount.diffFromYesterday}
+                </span>
+              )}
+              {} em relação a ontem
+            </p>
+          </>
+        )}
+      </CardContent>
+    </Card>
+  )
 }
